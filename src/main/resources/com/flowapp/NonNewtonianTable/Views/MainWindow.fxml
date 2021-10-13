@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="656.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flowapp.NonNewtonianTable.Controllers.MainWindowController">
+   <children>
+      <GridPane layoutX="15.0" layoutY="13.0" prefHeight="218.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="107.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="141.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="26.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="140.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="150.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Start Q (m3/hr)">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="startQTextField" prefHeight="26.0" prefWidth="155.0" text="0" GridPane.columnIndex="1" />
+            <Label text="End Q (m3/hr)" GridPane.rowIndex="1">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="endQTextField" prefHeight="26.0" prefWidth="152.0" text="1000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="ΔQ" GridPane.rowIndex="2">
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <Label text="I.D (mm)" GridPane.rowIndex="4" />
+            <Label text="Length (m)" GridPane.rowIndex="5" />
+            <Label text="n'" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="k'" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="bn'" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="deltaQTextField" text="100" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="idTextField" text="336.6" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="lengthTextField" text="80000" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="nDashTextField" text="0.55" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <TextField fx:id="kDashTextField" text="0.016" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <TextField fx:id="bnDashTextField" text="0.287" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647" />
+            <Label text="Sp.Gr" GridPane.rowIndex="3" />
+            <TextField fx:id="spGrTextField" text="0.86" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="an'" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <TextField fx:id="anDashTextField" text="0.296" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <TextField fx:id="hsTextField" text="200" GridPane.columnIndex="4" />
+            <Label text="Static Head" GridPane.columnIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="calculateBtn" layoutX="200.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="215.0" text="Calculate" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="236.0" />
+      <TableView fx:id="resultTableView" layoutX="9.0" layoutY="285.0" prefHeight="363.0" prefWidth="580.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="285.0">
+         <columns>
+            <TableColumn fx:id="qColumn" prefWidth="75.0" text="Q (m3/hr)" />
+            <TableColumn fx:id="vColumn" prefWidth="89.0" text="v (m/s)" />
+            <TableColumn fx:id="nreColumn" prefWidth="97.0" text="Nre,me" />
+            <TableColumn fx:id="fColumn" prefWidth="109.0" text="f" />
+            <TableColumn fx:id="hfColumn" prefWidth="103.0" text="hf (m)" />
+            <TableColumn fx:id="htColumn" prefWidth="109.0" text="ht (m)" />
+         </columns></TableView>
+   </children>
+</AnchorPane>
