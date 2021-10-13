@@ -2,6 +2,7 @@ package com.flowapp.NonNewtonianTable.Controllers;
 
 import com.flowapp.NonNewtonianTable.Models.LineRow;
 import com.flowapp.NonNewtonianTable.NonNewtonianTable;
+import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Service;
@@ -11,16 +12,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.DataFormat;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class MainWindowController implements Initializable {
@@ -83,9 +85,23 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<LineRow, Float> htColumn;
 
+    @FXML
+    private ImageView facebookIcon;
+
+    @FXML
+    private ImageView linkedInIcon;
+
+    @FXML
+    private ImageView emailIcon;
 
     Stage getStage() {
         return (Stage) calculateBtn.getScene().getWindow();
+    }
+
+    private final Application application;
+
+    public MainWindowController(Application application) {
+        this.application = application;
     }
 
     @Override
@@ -116,6 +132,41 @@ public class MainWindowController implements Initializable {
             }
         });
 
+        setUpIcons();
+    }
+
+    private void setUpIcons() {
+        var packagePath = getClass().getPackageName().split("\\.");
+        packagePath[packagePath.length-1] = "Images";
+        String fontPath = Arrays.stream(packagePath).reduce("", (s, s2) -> s + "/" + s2);
+        final var facebookImage = getClass().getResource(fontPath + "/facebook.png");
+        final var linkedInImage = getClass().getResource(fontPath + "/linkedin.png");
+        final var emailImage = getClass().getResource(fontPath + "/email.png");
+        facebookIcon.setImage(new Image(Objects.requireNonNull(facebookImage).toString()));
+        linkedInIcon.setImage(new Image(Objects.requireNonNull(linkedInImage).toString()));
+        emailIcon.setImage(new Image(Objects.requireNonNull(emailImage).toString()));
+        facebookIcon.setPickOnBounds(true);
+        linkedInIcon.setPickOnBounds(true);
+        emailIcon.setPickOnBounds(true);
+        facebookIcon.setOnMouseClicked(e -> {
+            openBrowser("https://www.facebook.com/Moustafa.essam.hpp");
+        });
+        linkedInIcon.setOnMouseClicked(e -> {
+            openBrowser("https://www.linkedin.com/in/moustafa-essam-726262174");
+        });
+        emailIcon.setOnMouseClicked(e -> {
+            final var email = "mailto:essam.moustafa15@gmail.com";
+            openBrowser(email);
+            copyToClipboard(email);
+        });
+    }
+
+    void openBrowser(String url) {
+        application.getHostServices().showDocument(url);
+    }
+
+    private void copyToClipboard(String answer) {
+        Clipboard.getSystemClipboard().setContent(Map.of(DataFormat.PLAIN_TEXT, answer));
     }
 
     private final Pattern numbersExpr = Pattern.compile("[-]?[\\d]*[.]?[\\d]*");

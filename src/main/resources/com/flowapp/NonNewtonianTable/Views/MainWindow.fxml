@@ -7,12 +7,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="656.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.flowapp.NonNewtonianTable.Controllers.MainWindowController">
+<AnchorPane prefHeight="656.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="15.0" layoutY="13.0" prefHeight="218.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -69,7 +73,7 @@
          </children>
       </GridPane>
       <Button fx:id="calculateBtn" layoutX="200.0" layoutY="236.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="215.0" text="Calculate" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="236.0" />
-      <TableView fx:id="resultTableView" layoutX="9.0" layoutY="285.0" prefHeight="363.0" prefWidth="580.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="285.0">
+      <TableView fx:id="resultTableView" layoutX="9.0" layoutY="285.0" prefHeight="297.0" prefWidth="583.0" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="285.0">
          <columns>
             <TableColumn fx:id="qColumn" prefWidth="75.0" text="Q (m3/hr)" />
             <TableColumn fx:id="vColumn" prefWidth="89.0" text="v (m/s)" />
@@ -78,5 +82,29 @@
             <TableColumn fx:id="hfColumn" prefWidth="103.0" text="hf (m)" />
             <TableColumn fx:id="htColumn" prefWidth="109.0" text="ht (m)" />
          </columns></TableView>
+        <VBox alignment="CENTER" layoutY="410.0" prefHeight="26.0" prefWidth="258.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+           <children>
+               <Label text="Made By: Eng. Moustafa Essam" />
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                       <ImageView fx:id="facebookIcon" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../Images/facebook.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fx:id="linkedInIcon" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../Images/linkedin.png" />
+                           </image>
+                       </ImageView>
+                       <ImageView fx:id="emailIcon" fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@../Images/email.png" />
+                           </image>
+                       </ImageView>
+                   </children>
+               </HBox>
+           </children>
+       </VBox>
    </children>
 </AnchorPane>

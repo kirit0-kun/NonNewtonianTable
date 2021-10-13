@@ -1,5 +1,6 @@
 package com.flowapp.NonNewtonianTable;
 
+import com.flowapp.NonNewtonianTable.Controllers.MainWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +21,10 @@ public class Launcher extends Application {
     }
 
     private void showMainWindow(Stage primaryStage) throws java.io.IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Views/MainWindow.fxml")));
+        MainWindowController mainWindowController = new MainWindowController(this);
+        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Views/MainWindow.fxml")));
+        fxmlLoader.setController(mainWindowController);
+        Parent root = fxmlLoader.load();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
