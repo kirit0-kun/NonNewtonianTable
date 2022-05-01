@@ -71,7 +71,7 @@ public class NonNewtonianTable {
                 }
             }
             return newRow;
-        }).collect(Collectors.toList());
+        }).toList();
         for (var row: newRows) {
             at.addRow(row);
         }
