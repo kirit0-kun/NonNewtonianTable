@@ -1,4 +1,4 @@
-module NonNewtonianTable {
+module com.flowapp.NonNewtonianTable {
     requires javafx.fxml;
     requires javafx.controls;
     requires javafx.graphics;
